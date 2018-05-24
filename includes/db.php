@@ -1,8 +1,20 @@
 <?php
-	$dbhost = "localhost";
-	$dbuser = "root";
-	$dbpass = "root";
-	$dbname = "myfinewine";
+	
+	if ($host == 'localhost:8888') {
+	  // Local database credentials
+	  $dbhost = "localhost";
+	  $dbuser = "root";
+	  $dbpass = "root";
+	  $dbname = "myfinewine";
+	}
+	else {
+	  // Remote database credentials
+	  $dbhost = "localhost";
+	  $dbuser = "ryanvan4_wine";
+	  $dbpass = "winewinewine";
+	  $dbname = "ryanvan4_myfinewine";
+	}
+
 	$connection = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
 
 	if (mysqli_connect_errno()) {
