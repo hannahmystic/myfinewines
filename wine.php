@@ -14,52 +14,42 @@
 	    // Parameter is provided.
 	    // Look for a matching ID in the database.
 	    $query1 = 'SELECT * ';
-	    $query1 .= 'FROM directions ';
-	    $query1 .= "WHERE recipe_id = '{$id}' ";
+	    $query1 .= 'FROM wines ';
+	    $query1 .= "WHERE id = '{$id}' ";
 	    $result1 = mysqli_query($connection, $query1);
 	    if (!$result1) {
-	      die('Database query failed.');
+	      die('Database query failed.'.$query1);
 	    }
-
-	    $query2 = 'SELECT * ';
-	    $query2 .= 'FROM ingredients ';
-	    $query2 .= "WHERE recipe_id = '{$id}' ";
-	    $result2 = mysqli_query($connection, $query2);
-	    if (!$result2) {
-	      die('Database query failed.');
-	    }
-
-	    $query3 = 'SELECT * ';
-	    $query3 .= 'FROM main ';
-	    $query3 .= "WHERE id = '{$id}' ";
-	    $result3 = mysqli_query($connection, $query3);
-	    if (!$result3) {
-	      die('Database query failed.');
-	    }
-
 	    
 
 	  }
 
 	  require_once "includes/header.php";
-	  $details = mysqli_fetch_assoc($result3);
+	  $details = mysqli_fetch_assoc($result1);
 
 ?>
 
 
 	<div class="blue-space"></div>
 
+	
+	<?php 
 
+	$id2 = $id;
+	if ($id2 < 10) {
+		$id2 = 0.$id;
+	}
 
+	?>
 
 
 
 	<div class="main flexbox">
-		<div class="featured-2" style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.6)), url( images/<?php echo $details['recipe_img'] ?>.jpg);">
+		<div class="featured-2" style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.6)), url( images/wine_image-<?php echo $id2 ?>.jpg);">
 			<div class="hero">
 				
-				<h1><?php echo $details['title'] ?></h1>
-				<h2><?php echo $details['subtitle'] ?></h2>
+				<h1><?php echo $details['name'] ?></h1>
+				<h2><?php echo $details['score'] ?></h2>
 			</div>
 		</div>
 		<div class="blue-space">
@@ -70,21 +60,21 @@
 			<div class="desc">
 				<p><?php echo $details['description'] ?> </p>
 			</div>
-			<div class="ingredients">
-				<h3 class="steptitle">Ingredients</h3>
+			<div class="prices">
+				<h3 class="stepname">prices</h3>
 					
 				<ul>
 					<?php 
-						while ($row = mysqli_fetch_assoc($result2)) {
+						while ($row = mysqli_fetch_assoc($result1)) {
 					?>
 						<li>
-							<?php echo $row['ingredient'] ?>
+							<?php echo $row['price'] ?>
 						</li>
 					<?php
 						}
 					?>
 				</ul>
-				<img src="images/<?php echo $details['ingredients_img'] ?>.png" alt="Ingredients">
+				<img src="images/<?php echo $details['prices_img'] ?>.png" alt="prices">
 				
 			</div>
 
@@ -101,7 +91,7 @@
 						
 						<?php 
 							if($count == 1) {
-								echo "<h3>Prepare the ingredients:</h3>";
+								echo "<h3>Prepare the prices:</h3>";
 							}
 							if($count == 6) {
 								echo "<h3>Finish & serve your dish:</h3>";

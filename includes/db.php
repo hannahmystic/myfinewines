@@ -1,6 +1,6 @@
 <?php
 	
-	if ($host == 'localhost:8888') {
+	if ($host == 'localhost') {
 	  // Local database credentials
 	  $dbhost = "localhost";
 	  $dbuser = "root";

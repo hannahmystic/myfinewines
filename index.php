@@ -17,7 +17,7 @@
 	<div class="blue-space"></div>
 	<div class="main flexbox">
 		<a href="recipe.html" class="link">
-			<div class="featured">
+			<div class="featured" style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.6)), url( images/wine_image-11.jpg);">
 
 				<!--<div class="hero">
 					<h4>Featured Recipe</h4>

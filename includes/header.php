@@ -11,12 +11,8 @@
 <body>
 	<div class="header">
 		<div class="logo">
-			<h1>My Fine Wines</h1>
-			<a href="index.php" class="logo-link"><img src="images/logo.svg" alt="MyFineWines" class="logo-svg"></a>
-			<form>
-				<input type="text" placeholder="Search for Wines"></input>
-				<a href="results.html" class="button">Search</a>
-			</form>
+			<a href="index.php" class="logo-link"><img src="images/logo.png" alt="MyFineWines" class="logo-svg"></a>
+			
 		</div>
 
 		
